@@ -80,6 +80,8 @@ Scheduled runs often start late. Give a nightly job a **Grace time** of an hour 
 
 The text goes in `?msg=` and is shown in the alert and on the incident page. mon.red keeps it as one line of plain text. On a network error or an HTTP 5xx the action tries once more after 3 seconds. mon.red takes up to 60 heartbeats a minute for one monitor, the next ones get HTTP 429 and change nothing. The User-Agent is `mon-red-heartbeat-action/<version>`.
 
+How a heartbeat monitor works, all its signals and examples for crontab and shell scripts: [Heartbeat monitoring in the mon.red documentation](https://mon.red/en/doc/heartbeat/).
+
 ## Examples
 
 ### Nightly tests with their duration
@@ -173,7 +175,7 @@ Secrets are empty in pull requests from forks and from Dependabot, and the step 
 
 ## mon.red
 
-[mon.red](https://mon.red) checks websites and servers from different places and watches heartbeats of jobs. The free plan has 5 monitors, heartbeats included. [Create a free account](https://mon.red/#pricing).
+[mon.red](https://mon.red) checks websites and servers from different places and watches heartbeats of jobs. The free plan has 5 monitors, heartbeats included. [Create a free account](https://mon.red/#pricing) or read the [documentation](https://mon.red/en/doc/).
 
 ## License
 
