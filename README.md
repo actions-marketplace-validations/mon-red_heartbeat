@@ -31,7 +31,7 @@ jobs:
   backup:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - run: ./backup.sh
 
       - uses: mon-red/heartbeat@v1
@@ -97,7 +97,7 @@ jobs:
           url: ${{ secrets.MONRED_HEARTBEAT_URL }}
           status: start
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - run: npm ci && npm test
 
       - uses: mon-red/heartbeat@v1
@@ -130,8 +130,8 @@ jobs:
         node: [20, 22]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
         with:
           node-version: ${{ matrix.node }}
       - run: npm ci && npm test
