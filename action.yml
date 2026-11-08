@@ -1,4 +1,4 @@
-name: 'mon.red Heartbeat'
+name: 'mon.red Heartbeat Monitor'
 description: 'Send a heartbeat to mon.red and get an alert when a scheduled job fails or stops running'
 author: 'mon.red'
 

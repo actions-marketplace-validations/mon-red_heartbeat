@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.1
+
+The action is called mon.red Heartbeat Monitor in GitHub Marketplace: https://github.com/marketplace/actions/mon-red-heartbeat-monitor. Its work is the same, `mon-red/heartbeat@v1` keeps working.
+
 ## 1.0.0
 
 First release.

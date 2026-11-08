@@ -1,7 +1,7 @@
-# mon.red Heartbeat
+# mon.red Heartbeat Monitor
 
 [![Tests](https://github.com/mon-red/heartbeat/actions/workflows/test.yml/badge.svg)](https://github.com/mon-red/heartbeat/actions/workflows/test.yml)
-[![GitHub Marketplace](https://img.shields.io/badge/Marketplace-mon.red%20Heartbeat-blue?logo=github)](https://github.com/marketplace/actions/mon-red-heartbeat)
+[![GitHub Marketplace](https://img.shields.io/badge/Marketplace-mon.red%20Heartbeat%20Monitor-blue?logo=github)](https://github.com/marketplace/actions/mon-red-heartbeat-monitor)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 Get an alert in Telegram, Slack, Matrix or by email when a scheduled GitHub workflow fails or stops running. One step at the end of the job sends a heartbeat to [mon.red](https://mon.red).

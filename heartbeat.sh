@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# mon.red Heartbeat: sends one heartbeat of a GitHub Actions job to a heartbeat monitor of mon.red (https://mon.red).
+# mon.red Heartbeat Monitor: sends one heartbeat of a GitHub Actions job to a heartbeat monitor of mon.red (https://mon.red).
 #
 # The inputs come only from the environment (action.yml puts them there), so nothing of them is ever a part of the code of the shell:
 #   HB_URL      the URL of the monitor, a secret: https://ping.mon.red/<token>
@@ -18,7 +18,7 @@
 #
 # Written for bash 3.2 too (macOS): no ${var,,}, no associative arrays.
 
-VERSION=1.0.0   # the version of the release (in the User-Agent): change it with every release, CHANGELOG.md
+VERSION=1.0.1   # the version of the release (in the User-Agent): change it with every release, CHANGELOG.md
 MSG_MAX=200     # bytes: mon.red keeps no more of the text
 
 sent=false     # the outputs: written once, when the script ends (finish)
