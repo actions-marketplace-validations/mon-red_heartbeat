@@ -1,0 +1,51 @@
+name: 'mon.red Heartbeat'
+description: 'Send a heartbeat to mon.red and get an alert when a scheduled job fails or stops running'
+author: 'mon.red'
+
+branding:
+  icon: 'activity'
+  color: 'red'
+
+inputs:
+  url:
+    description: 'Heartbeat URL of your mon.red monitor. Keep it in a secret'
+    required: true
+  status:
+    description: 'success, failure, cancelled or skipped (pass job.status or needs.<job>.result), or start at the beginning of the job'
+    required: false
+    default: 'success'
+  message:
+    description: 'Short text for mon.red, up to 200 bytes. Empty: the workflow, the run number, the branch and a link to the run'
+    required: false
+    default: ''
+  timeout:
+    description: 'Request timeout in seconds, 1 to 300'
+    required: false
+    default: '10'
+  fail-on-error:
+    description: 'true fails the step when mon.red does not accept the heartbeat. By default it is only a warning'
+    required: false
+    default: 'false'
+
+outputs:
+  response-code:
+    description: 'HTTP code of the answer of mon.red, empty when it could not be reached'
+    value: ${{ steps.send.outputs.response-code }}
+  sent:
+    description: 'true when mon.red accepted the heartbeat, else false'
+    value: ${{ steps.send.outputs.sent }}
+
+runs:
+  using: 'composite'
+  steps:
+    - id: send
+      shell: bash
+      # the inputs go to the script only through the environment, never into the command (heartbeat.sh).
+      # The path of the action has backslashes on Windows: bash takes it with forward ones
+      env:
+        HB_URL: ${{ inputs.url }}
+        HB_STATUS: ${{ inputs.status }}
+        HB_MESSAGE: ${{ inputs.message }}
+        HB_TIMEOUT: ${{ inputs.timeout }}
+        HB_FAIL: ${{ inputs.fail-on-error }}
+      run: bash "${GITHUB_ACTION_PATH//\\//}/heartbeat.sh"

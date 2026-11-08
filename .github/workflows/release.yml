@@ -1,0 +1,29 @@
+# A published release vX.Y.Z moves the tag of its major version (v1) to itself: users of mon-red/heartbeat@v1 get the fix without a change.
+name: Release
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+
+jobs:
+  major-tag:
+    if: ${{ !github.event.release.prerelease }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Move the major tag to this release
+        env:
+          TAG: ${{ github.event.release.tag_name }}
+        run: |
+          case "$TAG" in
+            v[0-9]*.[0-9]*.[0-9]*) ;;
+            *) echo "::error::The tag of the release must be vX.Y.Z"; exit 1 ;;
+          esac
+          major=${TAG%%.*}
+          git tag -f "$major" "$GITHUB_SHA"
+          git push -f origin "refs/tags/$major"
+          echo "::notice::$major now points to $TAG"
